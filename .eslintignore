@@ -1,0 +1,4 @@
+/config/*
+/src/serviceWorker.ts
+/scripts/*
+/public/*
