@@ -3,7 +3,7 @@ import React from 'react'
 import { LayoutProps } from '../utils/interface'
 
 
-const Layout = (props: LayoutProps) => {
+function Layout(props: LayoutProps) {
 
   return (
     <div>

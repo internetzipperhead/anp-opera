@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ServerError: React.FC = () => {
+function ServerError() {
   return (
     <div>500</div>
   )

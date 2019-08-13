@@ -1,4 +1,6 @@
 import * as actionTypes from './actionTypes'
+import { IDispatchAction } from '../../../utils/interface'
+
 
 export const globalState = {
   title: localStorage.getItem('title') || '运维歌剧院',
@@ -15,12 +17,7 @@ interface GlobalState {
   themeList: any[]
 }
 
-interface GlobalAction {
-  type: string,
-  data: string
-}
-
-export default (state: GlobalState, action: GlobalAction) => {
+export default (state: GlobalState, action: IDispatchAction) => {
   switch (action.type) {
     case actionTypes.SET_TITLE:
     case actionTypes.SET_THEME:

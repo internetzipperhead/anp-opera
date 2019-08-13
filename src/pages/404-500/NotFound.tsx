@@ -1,6 +1,6 @@
 import React from 'react'
 
-const NotFound: React.FC = () => {
+function NotFound() {
   return (
     <div>404</div>
   )

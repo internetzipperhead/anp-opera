@@ -1,6 +1,6 @@
 import React from 'react'
 
-const DoutuDetail: React.FC = () => {
+function DoutuDetail() {
   return (
     <div>DoutuDetail</div>
   )
