@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { RouteComponentProps, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { Avatar, Icon, Menu } from 'antd'
 
 import { menuRoutes } from '../../router/appRoute'
