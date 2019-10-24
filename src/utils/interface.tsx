@@ -8,3 +8,11 @@ export interface IDispatchAction {
   type: string,
   data: any
 }
+
+// =============
+// axios
+// =============
+
+export interface MethodOptions {
+  contentType?: string
+}

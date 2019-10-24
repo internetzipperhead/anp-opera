@@ -293,9 +293,10 @@ module.exports = function(webpackEnv) {
         // - add on 2019/08/12
         '@': path.resolve('src'),
         'assets': path.resolve('src/assets'),
+        'utils': path.resolve('src/utils'),
         'components': path.resolve('src/components'),
         'pages': path.resolve('src/pages'),
-        'views': path.resolve('src/styles/views'),
+        'styles': path.resolve('src/styles/views'),
       },
       plugins: [
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding

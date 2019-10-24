@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Form, Icon, Input, Button } from 'antd'
+import { Form, Icon, Input, Button, Row, Col } from 'antd'
 import { FormComponentProps } from 'antd/es/form'
 
 import { context } from '../../store'
@@ -33,8 +33,9 @@ function Login(props: IProps) {
   }
   const { getFieldDecorator } = props.form
   return (
-    <div className="m-login">
-      <div className="login-form">
+    <Row type="flex" justify="center" align="middle" className="m-login">
+      <Col xs={20} sm={12} md={12} lg={8} xl={6} className="login-wrapper">
+        <h1 className="login-title">运维数据平台</h1>
         <Form onSubmit={handleSubmit} className="login-form">
           <Form.Item>
             {getFieldDecorator('username', {
@@ -63,8 +64,8 @@ function Login(props: IProps) {
             </Button>
           </Form.Item>
         </Form>
-      </div>
-    </div>
+      </Col>
+    </Row>
   )
 }
 
