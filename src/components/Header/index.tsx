@@ -1,12 +1,2 @@
-import React from 'react'
-
-
-function Header() {
-  return (
-    <header className="app-header">
-      歌剧院
-    </header>
-  )
-}
-
-export default Header
+export { default as AppHeader } from './AppHeader'
+export { default as AdminHeader } from './AdminHeader'

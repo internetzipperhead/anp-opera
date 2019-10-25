@@ -1,25 +1,20 @@
 import React from 'react'
-import { Layout } from 'antd'
+import { Layout, Row, Col } from 'antd'
 
-import { LayoutProps } from '../utils/interface'
+import { LayoutProps } from '../model/interface'
+import { AppHeader } from '../components/Header'
 
-const { Header, Content, Footer } = Layout
-
-function LayoutBase(props: LayoutProps) {
+export default function LayoutApp(props: LayoutProps) {
 
   return (
-    <Layout className="layout">
-      <Header>
-        <div>LOGO</div>
-      </Header>
-      <Content>
-        { props.children }
-      </Content>
-      <Footer>
+    <Layout className="app-container">
+      <AppHeader />
+      <Row className="app-main" type="flex" justify="center">
+        <Col className="app-content" sm={24} md={20} lg={18}>{ props.children }</Col>
+      </Row>
+      {/* <Footer style={{ textAlign: 'center' }}>
         2019 @ nuctech
-      </Footer>
+      </Footer> */}
     </Layout>
   )
 }
-
-export default LayoutBase

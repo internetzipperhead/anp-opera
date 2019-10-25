@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
 import { Form, Icon, Input, Button, Row, Col } from 'antd'
 import { FormComponentProps } from 'antd/es/form'
+import { RouteComponentProps } from 'react-router-dom'
 
+import api from '../../api'
 import { context } from '../../store'
 import { login } from '../../store/redux/user/actionCreator'
-import '../../styles/views/login.less'
-import { RouteComponentProps } from 'react-router-dom'
 
 interface UserFormProps extends FormComponentProps {
   age: number;
@@ -17,17 +17,39 @@ interface IProps extends RouteComponentProps, FormComponentProps {
   history: any
 }
 
+interface IResponse {
+  msg: string,
+  result: true,
+  status: number,
+  data: any
+}
+
+interface loginInfo {
+  username: string;
+  password: string;
+}
+
 function Login(props: IProps) {
 
   const {userinfo: {dispatch}} = useContext(context)
 
   const handleSubmit = (e: any) => {
     e.preventDefault()
-    props.form.validateFields((err: any, values: any) => {
+    props.form.validateFields((err: any, values: loginInfo) => {
       if (!err) {
         console.log('Received values of form: ', values)
-        dispatch(login({...values, avatar: ''}))
-        props.history.push('/')
+        api.loginByNuctech(values).then((res: any) => {
+          console.log(res)
+          let { username, avatar, userID, accessToken } = res.data
+          let userinfo = {
+            username,
+            userID,
+            avatar,
+            token: accessToken
+          }
+          dispatch(login(userinfo))
+          props.history.push('/')
+        }).catch(err => console.log(err))
       }
     })
   }

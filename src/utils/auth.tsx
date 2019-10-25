@@ -6,7 +6,7 @@ import Cookies from 'js-cookie'
 import { TOKEN_KEY } from '../api/config'
 
 
-class Token {
+export default class Token {
   static getToken() {
     return Cookies.get(TOKEN_KEY)
   }
@@ -17,5 +17,3 @@ class Token {
     return Cookies.remove(TOKEN_KEY)
   }
 }
-
-export default Token

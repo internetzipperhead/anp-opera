@@ -2,19 +2,13 @@
  * 封装http请求
  */
 import qs from 'qs'
-import axios, { AxiosRequestConfig } from 'axios'
 import { message } from 'antd'
 import { useHistory } from 'react-router-dom'
+import axios, { AxiosRequestConfig } from 'axios'
 
 import Auth from '../utils/auth'
 import { baseURL } from './config'
-import { MethodOptions } from '../utils/interface'
-
-const history = useHistory()
-const routeSkip = path => {
-  history.push(path)
-  history.go(1)
-}
+import { MethodOptions } from '../model/interface'
 
 const CONTENT_TYPE_JSON = 'application/json'
 const CONTENT_TYPE_FILE = 'multipart/form-data'
@@ -55,16 +49,17 @@ service.interceptors.response.use(response => {
     return axios.request(originalRequest)
   }
   if (error.response) {
+    const history = useHistory()
     switch (error.response.status) {
       case 401:
         message.info('请重新登录！')
         setTimeout(() => {
-          routeSkip('/login')
+          history.push('/login')
         }, 100)
         return Promise.reject(error.response)
       case 500:
         message.error('Server Error')
-        routeSkip('/500')
+        history.push('/500')
         return Promise.reject(error.response)
       default:
         return Promise.reject(error.response)

@@ -1,18 +1,18 @@
 import React from 'react'
 // import {  } from 'antd'
 
-import { LayoutProps } from '../utils/interface'
-import Header from '../components/Header'
+import { LayoutProps } from '../model/interface'
+import { AdminHeader } from '../components/Header'
 import Sidebar from '../components/Sidebar'
 
 
-function Layout(props: LayoutProps) {
+export default function LayoutAdmin(props: LayoutProps) {
 
   return (
-    <div className="app-container">
+    <div className="admin-container">
       <Sidebar />
       <main className="app-main">
-        <Header />
+        <AdminHeader />
         <section className="app-content">
           {props.children}
         </section>
@@ -20,5 +20,3 @@ function Layout(props: LayoutProps) {
     </div>
   )
 }
-
-export default Layout

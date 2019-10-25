@@ -1,11 +1,11 @@
 import React, { createContext, useReducer } from 'react'
 
-import { LayoutProps } from '../utils/interface'
+import { LayoutProps } from '../model/interface'
 import globalReducer, { globalState } from './redux/global'
 import userReducer, { userState } from './redux/user'
-import { IDispatchAction } from '../utils/interface'
+import { IDispatchAction } from '../model/interface'
 
-let context = createContext({
+export let context = createContext({
   userinfo: {
     state: userState,
     dispatch: (action: IDispatchAction) => {}
@@ -37,5 +37,4 @@ const WrapperProvider = (props: LayoutProps) => {
   )
 }
 
-export { context }
 export default WrapperProvider

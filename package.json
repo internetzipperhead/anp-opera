@@ -144,5 +144,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "image-webpack-loader": "^6.0.0"
   }
 }

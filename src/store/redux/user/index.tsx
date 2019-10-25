@@ -1,16 +1,18 @@
 import * as actionTypes from './actionTypes'
-import { IDispatchAction } from '../../../utils/interface'
+import { IDispatchAction } from '../../../model/interface'
 
 export const userState = {
   isLogin: !!Number(localStorage.getItem('isLogin')) || false,
   username: '',
+  userID: null,
   avatar: '',
   token: localStorage.getItem('operaToken')
 }
 
 interface IUserState {
-  isLogin: boolean,
+  isLogin?: boolean,
   username: string,
+  userID: string,
   avatar: string,
   token: string | null
 }

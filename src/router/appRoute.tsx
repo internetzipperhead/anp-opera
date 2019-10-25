@@ -1,4 +1,4 @@
-import Layout from '../components/TheLayout'
+import Layout from '../layout/TheLayoutApp'
 import Refresh from '../components/TheRefresh'
 import Home from '../pages/Admin/Home'
 import About from '../pages/About'
@@ -22,6 +22,7 @@ export default {
     { path: 'doutu', name: '抖图', component: Doutu },
     { path: 'doutu/:id', name: '抖图详情', component: DoutuDetail },
     { path: 'test', name: '测试学习', component: Test },
+    { path: 'opera', name: '歌剧院', component: Test },
     { path: '500', name: '错误页', component: ServerError },
     { path: '*', name: '未知页', component: NotFound }
   ]

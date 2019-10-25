@@ -1,6 +1,5 @@
 import * as actionTypes from './actionTypes'
-import { IDispatchAction } from '../../../utils/interface'
-
+import { IDispatchAction } from '../../../model/interface'
 
 export const globalState = {
   title: localStorage.getItem('title') || '运维歌剧院',
