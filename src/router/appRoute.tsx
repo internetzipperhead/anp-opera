@@ -2,7 +2,7 @@ import Layout from '../layout/TheLayoutApp'
 import Refresh from '../components/TheRefresh'
 import Home from '../pages/Admin/Home'
 import About from '../pages/About'
-import { NotFound, ServerError } from '../pages/Error'
+import { NotFound, ServerError } from '../pages/40x-500'
 import { Doutu, DoutuDetail } from '../pages/Website/Doutu'
 import Test from '../pages/ZooKeeper/TestRouter'
 
@@ -12,12 +12,12 @@ export const menuRoutes = [
 ]
 
 export default {
-  path: '/',
+  path: '/web',
   name: 'home',
   component: Layout,
   children: [
     ...menuRoutes,
-    { path: '', name: '跳转到登录页', icon: 'swap', component: null },
+    // { path: '', name: '跳转到登录页', icon: 'swap', component: null },
     { path: 'refresh', name: '路由伪刷新', component: Refresh },
     { path: 'doutu', name: '抖图', component: Doutu },
     { path: 'doutu/:id', name: '抖图详情', component: DoutuDetail },

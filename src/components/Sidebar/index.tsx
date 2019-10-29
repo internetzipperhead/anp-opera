@@ -1,8 +1,10 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useContext } from 'react'
 import { withRouter } from 'react-router-dom'
 import { Avatar, Icon, Menu } from 'antd'
 
-import { menuRoutes } from '../../router/appRoute'
+import { adminMenuRoutes } from '../../router/adminRoute'
+import { context } from '../../store'
+import { logout } from '../../store/redux/user/actionCreator'
 
 
 interface IProps {
@@ -18,42 +20,33 @@ interface IMenuItem {
 
 function Sidebar(props: IProps) {
 
-  console.log(props)
-
   const [collapsed, setCollapsed] = useState(false)
+  const { userinfo: { state, dispatch } } = useContext(context)
 
   function onMenuClick({ key }: IMenuItem) {
-  // const onMenuClick = (menuItem:any) => {
+    console.log(key)
     let curRoute = props.location.pathname
     if (curRoute === key) {
-    // if (curRoute === menuItem.key) {
-      props.history.push('/refresh')
+      props.history.push('refresh')
     } else {
-      // eslint-disable-next-line
-      let route = menuRoutes.filter(item => '/' + item.path === key)
-      // let route = menuRoutes.filter(item => '/' + item.path === menuItem.key)
-      // props.appStore.updateNavBreadcrumb(route)
       props.history.push(key)
-      // props.history.push(menuItem.key)
     }
   }
 
-  const logout = useCallback(
-    () => {
-      props.history.push('/login')
-    },
-    [props.history]
-  )
+  const handleLogout = useCallback(() => {
+    dispatch(logout())
+    props.history.push('/login')
+  }, [props.history])
 
   const path = props.location.pathname
 
   return (
-    <aside className="app-sidebar" style={{ width: collapsed ? '80px' : '200px' }}>
-      <div className="app-logo" onClick={() => setCollapsed(!collapsed)}>
+    <aside className="admin-sidebar" style={{ width: collapsed ? '80px' : '200px' }}>
+      <div className="admin-logo" onClick={() => setCollapsed(!collapsed)}>
         <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" size="large" />
       </div>
       <Menu
-        className="app-menu"
+        className="admin-menu"
         onClick={onMenuClick}
         defaultSelectedKeys={[path]}
         selectedKeys={[path]}
@@ -61,17 +54,17 @@ function Sidebar(props: IProps) {
         inlineCollapsed={collapsed}
       >
         {
-          menuRoutes.map(item => (
-            <Menu.Item key={`/${item.path}`}>
-              <Icon type={item.icon} />
-              <span>{item.name}</span>
+          adminMenuRoutes.map(item => (
+            <Menu.Item key={`/admin/${item.path}`}>
+              <Icon type={item.icon} style={{ color: '#aaa' }} />
+              <span>{ item.name }</span>
             </Menu.Item>
           ))
         }
       </Menu>
-      <div className="app-logout">
-        <span>{'Nuctech'}</span>
-        <Icon onClick={logout} type="logout" />
+      <div className="admin-logout">
+        <span>{ state.username }</span>
+        <Icon onClick={handleLogout} type="logout" />
       </div>
     </aside>
   )

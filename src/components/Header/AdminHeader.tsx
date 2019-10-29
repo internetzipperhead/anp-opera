@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function AdminHeader() {
   return (
-    <header className="app-header">
+    <header className="admin-header">
       歌剧院
     </header>
   )

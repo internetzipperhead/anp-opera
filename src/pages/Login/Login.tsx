@@ -6,22 +6,11 @@ import { RouteComponentProps } from 'react-router-dom'
 import api from '../../api'
 import { context } from '../../store'
 import { login } from '../../store/redux/user/actionCreator'
-
-interface UserFormProps extends FormComponentProps {
-  age: number;
-  name: string;
-}
+import Token from '../../utils/auth'
 
 interface IProps extends RouteComponentProps, FormComponentProps {
-  form: any,
-  history: any
-}
-
-interface IResponse {
-  msg: string,
-  result: true,
-  status: number,
-  data: any
+  form: any;
+  history: any;
 }
 
 interface loginInfo {
@@ -31,7 +20,7 @@ interface loginInfo {
 
 function Login(props: IProps) {
 
-  const {userinfo: {dispatch}} = useContext(context)
+  const { userinfo: { dispatch } } = useContext(context)
 
   const handleSubmit = (e: any) => {
     e.preventDefault()
@@ -40,20 +29,23 @@ function Login(props: IProps) {
         console.log('Received values of form: ', values)
         api.loginByNuctech(values).then((res: any) => {
           console.log(res)
-          let { username, avatar, userID, accessToken } = res.data
+          let { username, userID, userType, avatar, accessToken } = res.data
           let userinfo = {
             username,
             userID,
             avatar,
-            token: accessToken
+            isAdmin: userType === 2 ? true : false
           }
+          Token.setToken(accessToken)
           dispatch(login(userinfo))
           props.history.push('/')
         }).catch(err => console.log(err))
       }
     })
   }
+
   const { getFieldDecorator } = props.form
+
   return (
     <Row type="flex" justify="center" align="middle" className="m-login">
       <Col xs={20} sm={12} md={12} lg={8} xl={6} className="login-wrapper">

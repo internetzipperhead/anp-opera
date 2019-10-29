@@ -16,3 +16,10 @@ export interface IDispatchAction {
 export interface MethodOptions {
   contentType?: string
 }
+
+export interface IResponse {
+  msg: string,
+  result: true,
+  status: number,
+  data: any
+}

@@ -5,16 +5,14 @@ import { LayoutProps } from '../model/interface'
 import { AppHeader } from '../components/Header'
 
 export default function LayoutApp(props: LayoutProps) {
-
   return (
     <Layout className="app-container">
       <AppHeader />
       <Row className="app-main" type="flex" justify="center">
-        <Col className="app-content" sm={24} md={20} lg={18}>{ props.children }</Col>
+        <Col className="app-content" sm={24} md={20} lg={18}>
+          { props.children }
+        </Col>
       </Row>
-      {/* <Footer style={{ textAlign: 'center' }}>
-        2019 @ nuctech
-      </Footer> */}
     </Layout>
   )
 }

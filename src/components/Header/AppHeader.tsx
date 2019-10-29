@@ -1,23 +1,28 @@
 import React, { useState, useCallback, useContext } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 import { Icon, Menu } from 'antd'
 
-import logo from '../../assets/logo.jpg'
+import logo from '../../assets/logo.png'
 import { context } from '../../store'
+import { logout } from '../../store/redux/user/actionCreator'
 
 export default function AppHeader() {
 
-  const [current, setCurrent] = useState('home')
-  const { userinfo } = useContext(context)
+  const { pathname } = useLocation()
+  const [current, setCurrent] = useState(pathname.split('/')[2])
+  const { userinfo: { state, dispatch } } = useContext(context)
 
   const history = useHistory()
-  const logout = useCallback(() => {
+  const handleLogout = useCallback(() => {
+    dispatch(logout())
     history.push('/login')
-  }, [history])
+  }, [history, dispatch])
 
   const handleClick = (e):void => {
-    console.log(e)
     setCurrent(e.key)
+    if (e.key === 'admin') {
+      return history.push('/admin/home')
+    }
     history.push(e.key)
   }
 
@@ -35,6 +40,10 @@ export default function AppHeader() {
           <Icon type="crown" />
           Opera
         </Menu.Item>
+        <Menu.Item key="admin">
+          <Icon type="crown" />
+          Admin
+        </Menu.Item>
       </Menu>
   )
 
@@ -45,8 +54,8 @@ export default function AppHeader() {
       </span>
       { generateMenu() }
       <div className="userinfo">
-        <span>{ userinfo.state.username }</span>
-        <Icon onClick={logout} type="logout" />
+        <span>{ state.username }</span>
+        <Icon onClick={handleLogout} type="logout" />
       </div>
     </div>
   )

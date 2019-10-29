@@ -1,26 +1,36 @@
 import * as actionTypes from './actionTypes'
 import { IDispatchAction } from '../../../model/interface'
 
+import Token from '../../../utils/auth'
+
 export const userState = {
-  isLogin: !!Number(localStorage.getItem('isLogin')) || false,
-  username: '',
+  isLogin: !!Number(localStorage.getItem('isLogin')),
+  isAdmin: !!Number(localStorage.getItem('isAdmin')),
+  username: localStorage.getItem('username'),
   userID: null,
-  avatar: '',
-  token: localStorage.getItem('operaToken')
+  avatar: ''
 }
 
 interface IUserState {
-  isLogin?: boolean,
-  username: string,
-  userID: string,
-  avatar: string,
-  token: string | null
+  isLogin?: boolean;
+  username: string;
+  userID: string;
+  avatar: string;
 }
 
 export default (state: IUserState, action: IDispatchAction) => {
   switch (action.type) {
     case actionTypes.LOG_IN:
-      return {...state, isLogin: true, ...action.data}
+      localStorage.setItem('isLogin', +action.data.isLogin + '')
+      localStorage.setItem('isAdmin', +action.data.isAdmin + '')
+      localStorage.setItem('username', action.data.username)
+      return {...state, ...action.data}
+    case actionTypes.LOG_OUT:
+      localStorage.removeItem('isLogin')
+      localStorage.removeItem('isAdmin')
+      localStorage.removeItem('username')
+      Token.removeToken()
+      return {...state, isLogin: false, isAdmin: false}
     case actionTypes.SET_AUTH:
       return Object.assign(state, action.data)
     default:

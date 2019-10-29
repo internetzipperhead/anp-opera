@@ -12,7 +12,7 @@ function Refresh(props: IProps) {
     props.history.go(-1)
   }, [props.history])
 
-  return <div></div>
+  return <></>
 }
 
 export default Refresh
