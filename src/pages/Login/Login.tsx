@@ -48,7 +48,7 @@ function Login(props: IProps) {
 
   return (
     <Row type="flex" justify="center" align="middle" className="m-login">
-      <Col xs={20} sm={12} md={12} lg={8} xl={6} className="login-wrapper">
+      <Col xs={20} sm={12} md={12} lg={10} xl={7} className="login-wrapper">
         <h1 className="login-title">运维数据平台</h1>
         <Form onSubmit={handleSubmit} className="login-form">
           <Form.Item>

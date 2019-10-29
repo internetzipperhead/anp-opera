@@ -27,7 +27,7 @@ function Router() {
       newCtxPath = newCtxPath.replace(/\/+/g, '/')
 
       if (item.component && item.children) {
-        // -不是admin身份，左右路由跳转到web/home界面
+        // 不是admin身份，左右路由跳转到web/home界面
         if (!isAdmin && newCtxPath.includes('admin')) {
           return children.push(
             <Route
@@ -60,7 +60,6 @@ function Router() {
         item.children.forEach(item => renderRoute(item, newCtxPath))
       } else {
         // 重定向
-        console.log(9999, isLogin)
         children.push(
           <Route
             exact

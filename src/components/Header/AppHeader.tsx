@@ -41,7 +41,7 @@ export default function AppHeader() {
           Opera
         </Menu.Item>
         <Menu.Item key="admin">
-          <Icon type="crown" />
+          <Icon type="gitlab" />
           Admin
         </Menu.Item>
       </Menu>

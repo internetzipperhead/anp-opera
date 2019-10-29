@@ -4,6 +4,7 @@ import { Layout, Row, Col } from 'antd'
 import { LayoutProps } from '../model/interface'
 import { AppHeader } from '../components/Header'
 
+
 export default function LayoutApp(props: LayoutProps) {
   return (
     <Layout className="app-container">

@@ -17,14 +17,12 @@ interface IMenuItem {
   key: string
 }
 
-
 function Sidebar(props: IProps) {
 
   const [collapsed, setCollapsed] = useState(false)
   const { userinfo: { state, dispatch } } = useContext(context)
 
   function onMenuClick({ key }: IMenuItem) {
-    console.log(key)
     let curRoute = props.location.pathname
     if (curRoute === key) {
       props.history.push('refresh')
