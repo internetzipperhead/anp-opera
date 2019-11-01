@@ -16,7 +16,7 @@ const CONTENT_TYPE_FORM = 'application/x-www-form-urlencoded;charset=utf-8'
 
 // 创建axios实例
 const service = axios.create({
-  baseURL: baseURL + '/v1',
+  baseURL: baseURL,
   timeout: 8000
 })
 

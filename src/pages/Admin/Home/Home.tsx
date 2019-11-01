@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Row, Col, Card } from 'antd'
 
@@ -9,8 +9,14 @@ function Home() {
     history.push('/operation/123')
   }, [history])
 
+  useEffect(() => {
+    let dom = document.getElementById('test')
+    console.log(dom)
+  }, [])
+
   return (
     <div className="m-home">
+      <div id="test">TEST</div>
       <Row gutter={10}>
         <Col xs={12} sm={8} md={8} lg={8} xl={6}>
           <Card

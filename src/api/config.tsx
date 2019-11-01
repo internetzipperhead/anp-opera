@@ -13,7 +13,7 @@ const signalrUrlMap = {
 }
 
 export const TOKEN_KEY = 'source_data_ols_token'
-export const baseURL = baseUrlMap[process.env.BUILD_TYPE || 'development']
+export const baseURL = baseUrlMap[process.env.BUILD_TYPE || 'development'] + '/v2'
 export const SIGNALR_URL = signalrUrlMap[process.env.BUILD_TYPE || 'development']
 
-window.localStorage.setItem('app_api_url', baseURL + '/v1/')
+window.localStorage.setItem('app_api_url', baseURL + '/v2/')

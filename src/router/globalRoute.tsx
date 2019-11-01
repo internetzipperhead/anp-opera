@@ -9,6 +9,7 @@ export default {
     { path: '/', name: 'default', component: null },
     { path: 'login', name: 'login', component: Login },
     { path: 'operation/:id', name: 'operationDetail', component: Operation },
+    { path: '500', name: 'serverError', component: ServerError },
     { path: '*/*', name: 'notFound', component: NotFound },
   ]
 }
