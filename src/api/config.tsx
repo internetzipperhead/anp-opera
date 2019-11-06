@@ -3,7 +3,7 @@
  */
 const baseUrlMap = {
   test: 'https://stgplotapi.anjianba.cn',
-  development: 'http://localhost:5281',
+  development: 'http://localhost:6281',
   production: 'https://plotapi.anjianba.cn'
 }
 const signalrUrlMap = {
@@ -13,7 +13,8 @@ const signalrUrlMap = {
 }
 
 export const TOKEN_KEY = 'source_data_ols_token'
-export const baseURL = baseUrlMap[process.env.BUILD_TYPE || 'development'] + '/v2'
+export const BASE_URL = baseUrlMap[process.env.BUILD_TYPE || 'development'] + '/v1'
 export const SIGNALR_URL = signalrUrlMap[process.env.BUILD_TYPE || 'development']
+export const AXIOS_TIMEOUT = 8000
 
-window.localStorage.setItem('app_api_url', baseURL + '/v2/')
+window.localStorage.setItem('app_api_url', BASE_URL)

@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom'
 import axios, { AxiosRequestConfig } from 'axios'
 
 import Auth from '../utils/auth'
-import { baseURL } from './config'
+import { BASE_URL as baseURL, AXIOS_TIMEOUT as timeout } from './config'
 import { MethodOptions } from '../model/interface'
 
 const CONTENT_TYPE_JSON = 'application/json'
@@ -16,8 +16,8 @@ const CONTENT_TYPE_FORM = 'application/x-www-form-urlencoded;charset=utf-8'
 
 // 创建axios实例
 const service = axios.create({
-  baseURL: baseURL,
-  timeout: 8000
+  baseURL,
+  timeout
 })
 
 // 请求拦截
