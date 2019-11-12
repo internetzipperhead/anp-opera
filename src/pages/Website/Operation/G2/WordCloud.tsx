@@ -32,7 +32,7 @@ G2.Shape.registerShape && G2.Shape.registerShape('point', 'cloud', {
   }
 })
 
-function ApiRequest() {
+function WordCloud() {
 
   useEffect(() => {
     axios.get('https://alifd.alibabausercontent.com/materials/@bizcharts/other-word-cloud/0.3.5/mock.json')
@@ -102,4 +102,4 @@ function ApiRequest() {
   )
 }
 
-export default ApiRequest
+export default WordCloud

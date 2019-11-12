@@ -8,7 +8,9 @@ const data = [
   { method: 'DELETE.', count: 49, city: 'tyo' }
 ]
 
-function ApiRequest() {
+
+// - 基础柱状图
+function BaseBar() {
 
   useEffect(() => {
     const container = document.getElementById('apiNode') as HTMLDivElement
@@ -56,4 +58,4 @@ function ApiRequest() {
   )
 }
 
-export default ApiRequest
+export default BaseBar
