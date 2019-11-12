@@ -1,61 +1,34 @@
-import React, { useEffect } from 'react'
-import G2, { Chart } from '@antv/g2'
+import React, { useEffect, useState } from 'react'
+import G2 from '@antv/g2'
 
 
 // - 基础柱状图
 function BaseBar(props) {
 
-  let { drViewData } = props
-
-  let chart: Chart
-
-  const data = [
-    {
-      type: '汽车',
-      value: 34
-    }, {
-      type: '建材家居',
-      value: 85
-    }, {
-      type: '住宿旅游',
-      value: 103
-    }, {
-      type: '交通运输与仓储邮政',
-      value: 142
-    }, {
-      type: '建筑房地产',
-      value: 251
-    }, {
-      type: '教育',
-      value: 367
-    }, {
-      type: 'IT 通讯电子',
-      value: 491
-    }, {
-      type: '社会公共管理',
-      value: 672
-    }, {
-      type: '医疗卫生',
-      value: 868
-    }, {
-      type: '金融保险',
-      value: 1234
-    }
-  ]
+  const { renderData } = props
+  const [chart, setChart] = useState()
 
   useEffect(() => {
-    chart = new G2.Chart({
-      container: 'home-dr-g2',
-      forceFit: true,
-      height: 350,
-      padding: [20, 40, 50, 124]
-    })
-    chart.source(data, {
+    if (!chart) {
+      let chartG2 = new G2.Chart({
+        container: 'home-dr-g2',
+        forceFit: true,
+        height: 350,
+        padding: [20, 40, 50, 124]
+      })
+      setChart(chartG2)
+      return
+    }
+    if (renderData.length === 0) {
+      return
+    }
+    const max = Math.max(...renderData.map(item => item.value))
+    chart.source(renderData, {
       value: {
-        max: 1300,
+        max: max + max / 20,
         min: 0,
         nice: false,
-        alias: '请求数量'
+        alias: '请求数量（次）'
       }
     })
     chart.axis('type', {
@@ -66,7 +39,7 @@ function BaseBar(props) {
         }
       },
       tickLine: {
-        // alignWithLabel: false,
+        alignWithLabel: false,
         length: 0
       },
       line: {
@@ -94,11 +67,12 @@ function BaseBar(props) {
       offset: 10
     })
     chart.render()
-  }, [])
 
-  const stopChartRender = () => chart.clear()
+    return () => {
+      chart.clear()
+    }
 
-  useEffect(() => stopChartRender, [])
+  }, [renderData, chart])
 
   return (
     <div id="home-dr-g2" className="m-g2"></div>

@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import G2 from '@antv/g2'
 import DataSet from '@antv/data-set'
-import axios from 'axios'
 
 function getTextAttrs(cfg) {
   return Object.assign(
@@ -32,70 +31,77 @@ G2.Shape.registerShape && G2.Shape.registerShape('point', 'cloud', {
   }
 })
 
-function WordCloud() {
+function WordCloud(props) {
+
+  const { renderData } = props
+  const [chart, setChart] = useState()
+  console.log(renderData, 888)
 
   useEffect(() => {
-    axios.get('https://alifd.alibabausercontent.com/materials/@bizcharts/other-word-cloud/0.3.5/mock.json')
-      .then(res => {
-        const container = document.getElementById('mountNode') as HTMLDivElement
-        const { width, height } = container.getBoundingClientRect()
-        const dv = new DataSet.View().source(res.data.slice(0, 30))
-        const range = dv.range('value')
-        const min = range[0]
-        const max = range[1]
-
-        dv.transform({
-          type: 'tag-cloud',
-          title: '很好',
-          fields: ['x', 'value'],
-          size: [width, height],
-          font: 'Verdana',
-          padding: 0,
-          timeInterval: 5000,
-
-          // max execute time
-          rotate() {
-            let random = ~~(Math.random() * 4) % 4
-            if (random === 2) {
-              random = 0
-            }
-            return 0 // 0, 90, 270
-          },
-
-          fontSize(d) {
-            if (d.value) {
-              const divisor = (max - min) !== 0 ? (max - min) : 1
-              return ((d.value - min) / divisor) * (80 - 24) + 24
-            }
-            return 0
-          }
-        })
-        const chart = new G2.Chart({
-          container,
-          height,
-          width,
-          forceFit: true,
-          padding: 0
-        })
-        chart.source(dv, {
-          x: {
-            nice: false
-          },
-          y: {
-            nice: false
-          }
-        })
-        chart.legend(false)
-        chart.axis(false)
-        chart.tooltip({
-          showTitle: false
-        })
-        chart.coord('rect').reflect()
-        chart.point().position('x*y').color('category').shape('cloud').tooltip('value*category')
-        chart.render()
+    const container = document.getElementById('mountNode') as HTMLDivElement
+    const { width, height } = container.getBoundingClientRect()
+    if (!chart) {
+      const chartG2 = new G2.Chart({
+        container,
+        height,
+        width,
+        forceFit: true,
+        padding: 0
       })
-      .catch(err => console.log(err))
-  }, [])
+      setChart(chartG2)
+      return
+    }
+    if (renderData && renderData.length === 0) {
+      return
+    }
+    const dv = new DataSet.View().source(renderData)
+    const range = dv.range('value')
+    console.log(range, 777)
+    const min = range[0]
+    const max = range[1]
+
+    dv.transform({
+      type: 'tag-cloud',
+      title: '很好',
+      fields: ['name', 'value'],
+      size: [width, height],
+      font: 'Verdana',
+      padding: 0,
+      timeInterval: 5000,
+      rotate() {
+        let random = ~~(Math.random() * 4) % 4
+        if (random === 2) {
+          random = 0
+        }
+        return random * 30 // 0, 90, 270
+      },
+      fontSize(d) {
+        return (d.value - min) / (max - min) * (42 - 8) + 14
+      }
+    })
+
+    chart.source(dv, {
+      x: {
+        nice: false
+      },
+      y: {
+        nice: false
+      }
+    })
+    chart.legend(false)
+    chart.axis(false)
+    chart.tooltip({
+      showTitle: false
+    })
+    chart.coord().reflect()
+    chart.point().position('x*y').color('text').shape('cloud').tooltip('name*value')
+    chart.render()
+
+    return () => {
+      chart.clear()
+    }
+
+  }, [renderData, chart])
 
   return (
     <div id="mountNode" style={{ width: '100%', height: '500px'}}></div>

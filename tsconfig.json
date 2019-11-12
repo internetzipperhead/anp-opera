@@ -21,6 +21,7 @@
     "experimentalDecorators": true,
     "noImplicitAny": false
   },
+  "extends": "./paths.json",
   "include": [
     "src"
   ],

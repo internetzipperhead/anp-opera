@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Row, Col, Card } from 'antd'
 

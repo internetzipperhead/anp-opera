@@ -34,7 +34,7 @@ function Sidebar(props: IProps) {
   const handleLogout = useCallback(() => {
     dispatch(logout())
     props.history.push('/login')
-  }, [props.history])
+  }, [props.history, dispatch])
 
   const path = props.location.pathname
 
