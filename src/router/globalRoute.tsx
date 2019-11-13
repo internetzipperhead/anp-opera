@@ -1,5 +1,5 @@
 import Login from '../pages/Login'
-import Operation from '../pages/Website/Operation'
+import { OperationDetail } from '../pages/Website/Operation'
 import { NotFound, ServerError } from '../pages/40x-500'
 
 export default {
@@ -8,7 +8,7 @@ export default {
   children: [
     { path: '/', name: 'default', component: null },
     { path: 'login', name: 'login', component: Login },
-    { path: 'operation/:id', name: 'operationDetail', component: Operation },
+    { path: 'operation/:id', name: 'operationDetail', component: OperationDetail },
     { path: '500', name: 'serverError', component: ServerError },
     { path: '*/*', name: 'notFound', component: NotFound },
   ]

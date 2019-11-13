@@ -53,7 +53,7 @@ function PetalPie(props) {
         container: 'home-g2',
         forceFit: true,
         height: 400,
-        padding: ['40', '0']
+        padding: 50
       })
       setChart(chartG2)
       return
@@ -73,9 +73,11 @@ function PetalPie(props) {
       }
     })
     chart.render()
+
     return () => {
       chart.clear()
     }
+
   }, [renderData, chart])
 
   return (

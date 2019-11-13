@@ -48,7 +48,8 @@ function BaseBar(props) {
       }
     })
     chart.tooltip(true)
-    chart.interval().position('name*value').color('name', ['#7f8da9', '#fec514', '#db4c3c', '#daf0fd'])
+    chart.interval().position('name*value').color('name', ['#52c41a', '#fec514', '#db4c3c', '#daf0fd'])
+    // chart.interval().position('name*value').color('name', ['#7f8da9', '#fec514', '#db4c3c', '#daf0fd'])
     chart.render()
 
     return () => {

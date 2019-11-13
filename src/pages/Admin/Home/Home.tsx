@@ -16,7 +16,15 @@ function Home() {
           <Card
             onClick={handleClick}
             hoverable
-            cover={<img alt="example" src="https://picsum.photos/id/642/150/150?blur" />}
+            cover={<img alt="example" src="https://picsum.photos/id/145/150/150" />}
+          >
+            <Card.Meta title="第45周运维报告" description="桂林访问量增加" />
+          </Card>
+        </Col>
+        <Col xs={12} sm={8} md={8} lg={8} xl={6}>
+          <Card
+            hoverable
+            cover={<img alt="example" src="https://picsum.photos/id/304/150/150" />}
           >
             <Card.Meta title="Europe Street beat" description="www.instagram.com" />
           </Card>
@@ -24,15 +32,7 @@ function Home() {
         <Col xs={12} sm={8} md={8} lg={8} xl={6}>
           <Card
             hoverable
-            cover={<img alt="example" src="https://picsum.photos/id/824/150/150" />}
-          >
-            <Card.Meta title="Europe Street beat" description="www.instagram.com" />
-          </Card>
-        </Col>
-        <Col xs={12} sm={8} md={8} lg={8} xl={6}>
-          <Card
-            hoverable
-            cover={<img alt="example" src="https://picsum.photos/id/522/150/150" />}
+            cover={<img alt="example" src="https://picsum.photos/id/42/150/150" />}
           >
             <Card.Meta title="Europe Street beat" description="www.instagram.com" />
           </Card>

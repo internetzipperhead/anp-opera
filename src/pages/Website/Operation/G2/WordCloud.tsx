@@ -35,7 +35,6 @@ function WordCloud(props) {
 
   const { renderData } = props
   const [chart, setChart] = useState()
-  console.log(renderData, 888)
 
   useEffect(() => {
     const container = document.getElementById('mountNode') as HTMLDivElement
@@ -56,7 +55,6 @@ function WordCloud(props) {
     }
     const dv = new DataSet.View().source(renderData)
     const range = dv.range('value')
-    console.log(range, 777)
     const min = range[0]
     const max = range[1]
 

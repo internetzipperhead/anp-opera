@@ -4,27 +4,27 @@
 // operation
 
 let operationData = {
-  "id": 1,
-  "weekIndex": 45,
-  "startData": '2019/11/04',
-  "endData": '2019/11/10',
+  // "id": 1,
+  "weekIndex": 44,
+  "startData": '2019/10/28',
+  "endData": '2019/11/03',
   "commnet": '这里描述一下这周的运维情况',
-  "pageView": 76,
+  "pageView": 23,
   "description": "",
-  "createTime" : ISODate("2019-11-10T17:43:05.886Z"),
-  "modifyTime" : ISODate("2019-11-10T17:45:09.064Z"),
+  "createTime" : ISODate("2019-11-03T07:43:05.886Z"),
+  "modifyTime" : ISODate("2019-11-03T07:45:09.064Z"),
   "api": [{
     "name": "PUT",
-    "value": 621572
+    "value": 421572
   }, {
     "name": "POST",
-    "value": 247344
+    "value": 347344
   }, {
     "name": "GET",
-    "value": 166175
+    "value": 143175
   }, {
     "name": "DELETE",
-    "value": 222
+    "value": 312
   }],
   "business": [{
     "method": "PUT",
@@ -78,11 +78,11 @@ let operationData = {
     "value": 11704
   }],
   "tenements": [
-    { "name": "新疆机场", "value": 417272},
+    { "name": "新疆机场", "value": 517272},
     { "name": "桂林机场", "value": 240297},
-    { "name": "重庆机场", "value": 119839},
-    { "name": "首都机场", "value": 105032},
-    { "name": "深圳机场", "value": 66834},
+    { "name": "重庆机场", "value": 219839},
+    { "name": "首都机场", "value": 155032},
+    { "name": "深圳机场", "value": 65834},
     { "name": "威视人力资源", "value": 20735},
     { "name": "青岛海关关校", "value": 11677},
     { "name": "上海浦东机场", "value": 8417},
@@ -99,6 +99,6 @@ let operationData = {
     { "name": "三峡机场", "value": 7},
     { "name": "测试(100)", "value": 3},
     { "name": "机器人研发中心", "value": 3},
-    { "name": "民航认证环境", "value": 3},
+    { "name": "民航认证环境", "value": 3}
   ]
 }
