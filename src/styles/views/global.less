@@ -2,8 +2,15 @@
 * 全局样式
 * 包含 login、about
 */
+html {
+  --bg-color: #fff;
+  --color: #111;
+  // --bg-color: #585466;
+}
+
 #root {
   height: 100%;
+  color: var(--color);
 }
 
 // ==========
@@ -12,9 +19,6 @@
 .m-login {
   width: 100%;
   height: 100%;
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
   background: linear-gradient(to right, #403f81, #6076ff);
   .login {
 

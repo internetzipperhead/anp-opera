@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useContext } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
-import { Icon, Menu } from 'antd'
+import { Icon, Menu, Popconfirm } from 'antd'
 
 import logo from '../../assets/logo.png'
 import { context } from '../../store'
@@ -55,7 +55,15 @@ export default function AppHeader() {
       { generateMenu() }
       <div className="userinfo">
         <span>{ state.username }</span>
-        <Icon onClick={handleLogout} type="logout" />
+        <Popconfirm
+          style={{ width: "" }}
+          placement="leftTop"
+          title="你确定要退出吗？"
+          icon={<Icon type="question-circle-o" style={{ color: 'red' }} />}
+          onConfirm={handleLogout}
+        >
+          <Icon type="logout" />
+        </Popconfirm>
       </div>
     </div>
   )

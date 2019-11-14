@@ -69,20 +69,24 @@ function Operation() {
           <header className="operation-header">
             <h2>第{ data.weekIndex }周运维数据报告</h2>
             <div>
-              <Icon type="clock-circle" title="统计时间" /> 2019/10/20 -- 2019/10/26
-              <Icon type="eye" title="浏览次数" style={{ marginLeft: '10px' }} />
+              <Icon type="clock-circle" theme="twoTone" title="统计时间" /> { data.startData } -- { data.endData }
+              <Icon type="eye" theme="twoTone" twoToneColor="#52c41a" title="浏览次数" style={{ marginLeft: '10px' }} />
               { ' ' + data.pageView }
-              <span onClick={goBack}>返回</span>
+              <span onClick={goBack} className="goback"><Icon type="rollback" /> 返回</span>
             </div>
           </header>
+
           <Tag color="#108ee9"><Icon type="pie-chart" /> 业务请求</Tag>
           <HorizontalBar renderData={businessData} />
+
           <Tag color="#108ee9"><Icon type="bar-chart" /> 接口请求</Tag>
           <ApiRequest renderData={apiData} />
+
           <Tag color="#108ee9"><Icon type="bar-chart" /> 业务请求</Tag>
           <PetalPie renderData={apiData} />
+
           <Tag color="#108ee9"><Icon type="dot-chart" /> 租户使用云图</Tag>
-          <WordCloud renderData={tenements} />
+          <WordCloud name="租户名" value="调用量" renderData={tenements} />
         </Col>
       </Row>
     </div>

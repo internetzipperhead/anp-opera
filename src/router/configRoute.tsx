@@ -1,5 +1,7 @@
 import React, { useContext } from 'react'
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
+import { ConfigProvider } from 'antd'
+import zhCN from 'antd/es/locale/zh_CN'
 
 import rootRoutes from './globalRoute'
 import adminRoute from './adminRoute'
@@ -82,7 +84,12 @@ function Router() {
 
   const browserRoutes = renderRoutes(routes)
 
-  return <BrowserRouter>{browserRoutes}</BrowserRouter>
+  return (
+    <ConfigProvider locale={zhCN}>
+      <BrowserRouter>{browserRoutes}</BrowserRouter>
+    </ConfigProvider>
+  )
+
 }
 
 export default Router

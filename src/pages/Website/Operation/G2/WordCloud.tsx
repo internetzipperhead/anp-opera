@@ -33,7 +33,7 @@ G2.Shape.registerShape && G2.Shape.registerShape('point', 'cloud', {
 
 function WordCloud(props) {
 
-  const { renderData } = props
+  const { renderData, name, value } = props
   const [chart, setChart] = useState()
 
   useEffect(() => {
@@ -88,6 +88,12 @@ function WordCloud(props) {
     })
     chart.legend(false)
     chart.axis(false)
+    chart.scale('name', {
+      alias: name
+    })
+    chart.scale('value', {
+      alias: value
+    })
     chart.tooltip({
       showTitle: false
     })

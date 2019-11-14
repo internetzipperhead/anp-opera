@@ -59,6 +59,10 @@ function Sidebar(props: IProps) {
             </Menu.Item>
           ))
         }
+        <Menu.Item key={`/`}>
+          <Icon type="windows" style={{ color: '#aaa' }} />
+          <span>网站</span>
+        </Menu.Item>
       </Menu>
       <div className="admin-logout">
         <span>{ state.username }</span>
